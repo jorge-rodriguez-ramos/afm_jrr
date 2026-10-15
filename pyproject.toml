@@ -1,0 +1,82 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "afm_dl_jrr"
+version = "0.1.1"
+description = "AFM training pipeline"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "GPL-3.0-or-later" }
+authors = [
+  { name = "Jorge Rodriguez Ramos", email = "pro@jrr.one"}
+]
+keywords = ["afm", "deep-learning", "pytorch", "training", "computer-vision"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Operating System :: OS Independent",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+  "torch",
+  "torchvision",
+  "numpy",
+  "opencv-python",
+  "matplotlib",
+  "nptdms==1.10.0",
+  "pandas",
+  "tqdm",
+  "scikit-learn",
+  "python-dotenv",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8",
+  "pytest-cov",
+  "ruff",
+  "black",
+  "mypy",
+  "build",
+  "twine",
+]
+
+[project.urls]
+Homepage = "https://github.com/jorge-rodriguez-ramos/afm_jrr_workbench"
+Repository = "https://github.com/jorge-rodriguez-ramos/afm_jrr_workbench"
+Issues = "https://github.com/jorge-rodriguez-ramos/afm_jrr_workbench/issues"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
